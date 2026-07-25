@@ -1,0 +1,493 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Brand */
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-teal: var(--teal);
+  --color-teal-soft: var(--teal-soft);
+  --color-cloud: var(--cloud);
+  --color-ink: var(--ink);
+
+  /* Legacy aliases so any leftover classes render on the new palette */
+  --color-olive: var(--teal);
+  --color-olive-deep: var(--navy-deep);
+  --color-sage: var(--teal-soft);
+  --color-mint: var(--cloud);
+  --color-sand: var(--cloud);
+  --color-bone: #ffffff;
+  --color-champagne: var(--teal);
+  --color-graphite: var(--ink);
+  --color-cream: #ffffff;
+  --color-gold: var(--teal);
+  --color-gold-soft: var(--teal-soft);
+  --color-ink-2: var(--cloud);
+  --color-ink-3: #eef3f6;
+
+  --font-serif: "Fraunces", Georgia, serif;
+  --font-sans: "Manrope", "Inter", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 1rem;
+
+  /* Brand palette — from the logo (navy + teal) + warm accent */
+  --navy-deep: #0b1e3a; /* profundo, títulos */
+  --navy: #1c3a63; /* azul primario */
+  --teal: #3b8a8f; /* teal del logo */
+  --teal-soft: #a8d0d3; /* teal claro */
+  --cream: #f3ece0; /* crema cálida (acento) */
+  --cream-soft: #f8f3ea;
+  --cloud: #f4f7f9; /* fondo suave */
+  --ink: #1a2233; /* texto */
+
+  --background: #ffffff;
+  --foreground: var(--ink);
+
+  --card: #ffffff;
+  --card-foreground: var(--ink);
+  --popover: #ffffff;
+  --popover-foreground: var(--ink);
+
+  --primary: var(--navy-deep);
+  --primary-foreground: #ffffff;
+
+  --secondary: var(--cloud);
+  --secondary-foreground: var(--navy-deep);
+
+  --muted: var(--cloud);
+  --muted-foreground: #6b7688;
+
+  --accent: var(--teal);
+  --accent-foreground: #ffffff;
+
+  --destructive: oklch(0.55 0.2 27);
+  --destructive-foreground: #ffffff;
+
+  --border: #e6ebf0;
+  --input: #e6ebf0;
+  --ring: var(--teal);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+    background-color: #ffffff;
+    overflow-x: clip;
+  }
+  body {
+    background-color: #ffffff;
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    letter-spacing: -0.022em;
+    color: var(--navy-deep);
+    line-height: 1.02;
+  }
+  h1 {
+    font-weight: 400;
+    letter-spacing: -0.028em;
+  }
+  .font-serif {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    letter-spacing: -0.015em;
+  }
+  .font-sans-heading {
+    font-family: var(--font-sans);
+    letter-spacing: -0.03em;
+  }
+  ::selection {
+    background: var(--teal);
+    color: #ffffff;
+  }
+}
+
+@layer utilities {
+  .font-serif {
+    font-family: var(--font-serif);
+  }
+  .font-sans {
+    font-family: var(--font-sans);
+  }
+
+  .bg-navy {
+    background-color: var(--navy);
+  }
+  .bg-navy-deep {
+    background-color: var(--navy-deep);
+  }
+  .bg-teal {
+    background-color: var(--teal);
+  }
+  .bg-teal-soft {
+    background-color: var(--teal-soft);
+  }
+  .bg-cloud {
+    background-color: var(--cloud);
+  }
+  .bg-cream {
+    background-color: var(--cream);
+  }
+  .bg-cream-soft {
+    background-color: var(--cream-soft);
+  }
+  .text-cream {
+    color: var(--cream);
+  }
+  .bg-ink {
+    background-color: var(--ink);
+  }
+
+  /* Legacy aliases */
+  .bg-bone {
+    background-color: #ffffff;
+  }
+  .bg-sand {
+    background-color: var(--cloud);
+  }
+  .bg-mint {
+    background-color: var(--cloud);
+  }
+  .bg-sage {
+    background-color: var(--teal-soft);
+  }
+  .bg-olive {
+    background-color: var(--teal);
+  }
+  .bg-olive-deep {
+    background-color: var(--navy-deep);
+  }
+  .bg-champagne {
+    background-color: var(--teal);
+  }
+  .bg-cream {
+    background-color: #ffffff;
+  }
+  .bg-gold {
+    background-color: var(--teal);
+  }
+  .bg-gold-soft {
+    background-color: var(--teal-soft);
+  }
+  .bg-ink-2 {
+    background-color: var(--cloud);
+  }
+  .bg-ink-3 {
+    background-color: #eef3f6;
+  }
+
+  .text-navy {
+    color: var(--navy);
+  }
+  .text-navy-deep {
+    color: var(--navy-deep);
+  }
+  .text-teal {
+    color: var(--teal);
+  }
+  .text-teal-soft {
+    color: var(--teal-soft);
+  }
+  .text-ink {
+    color: var(--ink);
+  }
+  .text-cloud {
+    color: var(--cloud);
+  }
+
+  .text-olive {
+    color: var(--teal);
+  }
+  .text-olive-deep {
+    color: var(--navy-deep);
+  }
+  .text-graphite {
+    color: var(--ink);
+  }
+  .text-champagne {
+    color: var(--teal);
+  }
+  .text-bone {
+    color: #ffffff;
+  }
+  .text-cream {
+    color: var(--navy-deep);
+  }
+  .text-gold {
+    color: var(--teal);
+  }
+  .text-gold-soft {
+    color: var(--teal);
+  }
+  .text-stone-300 {
+    color: #d6d3d1;
+  }
+
+  .border-navy {
+    border-color: var(--navy-deep);
+  }
+  .border-teal {
+    border-color: var(--teal);
+  }
+  .border-gold {
+    border-color: var(--teal);
+  }
+  .border-gold-soft {
+    border-color: rgba(59, 138, 143, 0.25);
+  }
+  .border-olive {
+    border-color: var(--teal);
+  }
+  .border-sage {
+    border-color: var(--teal-soft);
+  }
+
+  .shadow-soft {
+    box-shadow: 0 1px 2px rgba(15, 36, 64, 0.04);
+  }
+  .shadow-card {
+    box-shadow: 0 1px 2px rgba(15, 36, 64, 0.04);
+  }
+  .shadow-gold {
+    box-shadow: 0 1px 2px rgba(15, 36, 64, 0.04);
+  }
+
+  .noir-card {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+  }
+  .noir-card-gold {
+    background: var(--navy-deep);
+    color: #ffffff;
+    border-radius: 1rem;
+  }
+
+  .hover-gold-glow {
+    transition:
+      border-color 0.3s ease,
+      transform 0.3s ease;
+  }
+  .hover-gold-glow:hover {
+    border-color: var(--teal);
+  }
+
+  .fade-up {
+    animation: fadeUp 0.8s ease-out both;
+  }
+
+  /* Scroll reveal */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  [data-reveal="fade"] {
+    transform: none;
+  }
+  [data-reveal="left"] {
+    transform: translateX(-32px);
+  }
+  [data-reveal="right"] {
+    transform: translateX(32px);
+  }
+  [data-reveal="zoom"] {
+    transform: scale(0.96);
+  }
+  [data-reveal].is-visible {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+
+  /* Float / drift animations */
+  .float-slow {
+    animation: floatY 7s ease-in-out infinite;
+  }
+  .float-slower {
+    animation: floatY 10s ease-in-out infinite;
+  }
+  .drift-slow {
+    animation: drift 14s ease-in-out infinite;
+  }
+
+  /* Underline sweep on links */
+  .link-sweep {
+    position: relative;
+    display: inline-flex;
+  }
+  .link-sweep::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right center;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .link-sweep:hover::after {
+    transform: scaleX(1);
+    transform-origin: left center;
+  }
+
+  /* Card lift */
+  .card-lift {
+    transition:
+      transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+      background-color 0.4s ease;
+  }
+  .card-lift:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 60px -30px rgba(15, 36, 64, 0.25);
+  }
+
+  /* Image reveal zoom */
+  .img-zoom {
+    overflow: hidden;
+  }
+  .img-zoom > img {
+    transition:
+      transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+      filter 0.6s ease;
+  }
+  .img-zoom:hover > img {
+    transform: scale(1.04);
+  }
+
+  /* Marquee */
+  .marquee-track {
+    animation: marquee 40s linear infinite;
+  }
+
+  /* Shimmer for eyebrows */
+  .eyebrow-line {
+    position: relative;
+    overflow: hidden;
+  }
+  .eyebrow-line::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(59, 138, 143, 0.6), transparent);
+    transform: translateX(-100%);
+    animation: sweep 3.6s ease-in-out infinite;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes floatY {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(12px, -8px);
+  }
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  60%,
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .float-slow,
+  .float-slower,
+  .drift-slow,
+  .marquee-track,
+  .eyebrow-line::after {
+    animation: none !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
